@@ -50,7 +50,9 @@ public class TimeTable {
 	        }
 	        
 	        //Retrieve the appts - <appt> 
-		for (int i = 0; i < appts.size(); i++) {
+		for (int i = 0; i < appts.size(); i++)
+		// for (int i = 1; i < appts.size(); i++)
+			{
 			Appt appt=appts.get(i);
 			if(!appt.getValid()) continue;
 			// Figure out which days the appointment occurs on
@@ -109,7 +111,9 @@ public class TimeTable {
 	            
 
 	            //Make sure that there is a limited number of recurrences
-	            for (int i = 0; i < appt.getRecurNumber()+1; i++) {
+	            for (int i = 0; i < appt.getRecurNumber()+1; i++)
+	            //for (int i = 0; i < appt.getRecurNumber(); i++)
+	            {
 	                
 	                //Add the day of occurrence to the list if it is after the first day
 	                if (!occurrenceDay.before(firstDay)) {
@@ -163,7 +167,9 @@ public class TimeTable {
 	                    nextDay.add(nextDay.DAY_OF_MONTH, 1);
 	                    int newDayOfWeek = nextDay.get(nextDay.DAY_OF_WEEK);
 	                
-	                    for (int i = 0; i < recurDays.length; i++) {
+	                    for (int i = 0; i < recurDays.length; i++)
+	                    //for (int i = 0; i < recurDays.length + 1; i++)
+	                    {
 	                        //If the calendar is set to a day of the week that the
 	                        //appt recurs on then return that day.
 	                        if (recurDays[i] == newDayOfWeek) {
