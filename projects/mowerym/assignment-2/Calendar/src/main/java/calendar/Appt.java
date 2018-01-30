@@ -113,7 +113,7 @@ public class Appt implements  Comparable<Appt>{
     	int NumDaysInMonth= CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
     				
     	if(startHour<0 || startHour>23)
-    	    // if(startHour<0 && startHour>23)
+        //if(startHour<0 && startHour>23)
     		this.valid=false;
     	else
         	if(startMinute<0 || startMinute>59)
@@ -123,7 +123,10 @@ public class Appt implements  Comparable<Appt>{
             		this.valid=false;
             	else
                 	if(startMonth<1 || startMonth>12)
-                	    //if(startMonth<1 || stertMonth<12)
+                    /*
+                    this bug was caught by the test1 in ApptTest
+                    if(startMonth<1 || startMonth<12)
+                     */
                 		this.valid=false;
                 	else
                 		this.valid=true;
@@ -278,7 +281,7 @@ public class Appt implements  Comparable<Appt>{
      * description.
      * @return a printable representation of this appointment
      */
-    private String represntationApp(){
+    protected String represntationApp(){
         String half = (getStartHour() > 11) ? "pm" : "am";
         int printableHour = getStartHour();
         if (printableHour > 11)
