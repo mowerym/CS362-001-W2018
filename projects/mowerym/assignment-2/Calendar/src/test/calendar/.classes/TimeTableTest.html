@@ -1,0 +1,210 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TimeTableTest</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">calendar</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TimeTableTest (calendar)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TimeTableTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (59/ 59)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package calendar;
+<i>2</i>&nbsp;/**
+<i>3</i>&nbsp; *  This class provides a basic set of test cases for the
+<i>4</i>&nbsp; *  TimeTable class.
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;import java.util.Calendar;
+<i>7</i>&nbsp;import java.util.GregorianCalendar;
+<i>8</i>&nbsp;import java.util.LinkedList;
+<i>9</i>&nbsp;import java.util.List;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import org.junit.Test;
+<i>13</i>&nbsp;//import sun.util.calendar.Gregorian;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import static org.junit.Assert.*;
+<i>16</i>&nbsp;
+<b class="fc"><i>17</i>&nbsp;public class TimeTableTest {</b>
+<i>18</i>&nbsp;	/**
+<i>19</i>&nbsp;	 *
+<i>20</i>&nbsp;	 * initial test
+<i>21</i>&nbsp;	 */
+<i>22</i>&nbsp;	 @Test
+<i>23</i>&nbsp;	  public void test01()  throws Throwable  {
+<b class="fc"><i>24</i>&nbsp;	 	LinkedList&lt;Appt&gt; lists = new LinkedList&lt;Appt&gt;();</b>
+<b class="fc"><i>25</i>&nbsp;	 	LinkedList&lt;Appt&gt; cpr = new LinkedList&lt;Appt&gt;();</b>
+<i>26</i>&nbsp;
+<b class="fc"><i>27</i>&nbsp;		 int startHour=15;</b>
+<b class="fc"><i>28</i>&nbsp;		 int startMinute=30;</b>
+<b class="fc"><i>29</i>&nbsp;		 int startDay=21;</b>
+<b class="fc"><i>30</i>&nbsp;		 int startMonth=01;</b>
+<b class="fc"><i>31</i>&nbsp;		 int startYear=2018;</b>
+<b class="fc"><i>32</i>&nbsp;		 String title=&quot;Birthday Party&quot;;</b>
+<b class="fc"><i>33</i>&nbsp;		 String description=&quot;This is my birthday party.&quot;;</b>
+<i>34</i>&nbsp;		 //Construct a new Appointment object with the initial data
+<b class="fc"><i>35</i>&nbsp;		 Appt appt = new Appt(startHour,</b>
+<i>36</i>&nbsp;				 startMinute ,
+<i>37</i>&nbsp;				 startDay ,
+<i>38</i>&nbsp;				 startMonth ,
+<i>39</i>&nbsp;				 startYear ,
+<i>40</i>&nbsp;				 title,
+<i>41</i>&nbsp;				 description);
+<i>42</i>&nbsp;
+<b class="fc"><i>43</i>&nbsp;		 int[] recurArray={2,3,4};</b>
+<b class="fc"><i>44</i>&nbsp;		 appt.setRecurrence( recurArray, Appt.RECUR_BY_WEEKLY, 2, Appt.RECUR_NUMBER_FOREVER);</b>
+<b class="fc"><i>45</i>&nbsp;	 	 lists.add(appt);</b>
+<i>46</i>&nbsp;
+<b class="fc"><i>47</i>&nbsp;	 	 TimeTable timeTable = new TimeTable();</b>
+<b class="fc"><i>48</i>&nbsp;		 GregorianCalendar firstDay = new GregorianCalendar(2018,01,21);</b>
+<b class="fc"><i>49</i>&nbsp;		 GregorianCalendar lastDay = (GregorianCalendar)firstDay.clone();</b>
+<b class="fc"><i>50</i>&nbsp;		 lastDay.add(Calendar.DAY_OF_MONTH,10);</b>
+<b class="fc"><i>51</i>&nbsp;		 LinkedList&lt;CalDay&gt; calDays = new LinkedList&lt;CalDay&gt;();</b>
+<b class="fc"><i>52</i>&nbsp;		 calDays = timeTable.getApptRange(lists, firstDay, lastDay);</b>
+<i>53</i>&nbsp;
+<b class="fc"><i>54</i>&nbsp;		 CalDay compare = new CalDay(firstDay);</b>
+<b class="fc"><i>55</i>&nbsp;		 compare.addAppt(appt);</b>
+<b class="fc"><i>56</i>&nbsp;		 cpr = calDays.get(0).getAppts();</b>
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;		 //assertions
+<i>59</i>&nbsp;		 //assertEquals(&quot;&quot;, calDays.get(0));
+<b class="fc"><i>60</i>&nbsp;		 assertEquals(lists, calDays.get(0).getAppts());</b>
+<b class="fc"><i>61</i>&nbsp;		 assertEquals(appt.getRecurBy(), cpr.get(0).getRecurBy());</b>
+<i>62</i>&nbsp;
+<b class="fc"><i>63</i>&nbsp;	 }</b>
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;	/**
+<i>66</i>&nbsp;	 *
+<i>67</i>&nbsp;	 * other tests including permute
+<i>68</i>&nbsp;	 */
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;	@Test
+<i>71</i>&nbsp;	  public void test02()  throws Throwable  {
+<b class="fc"><i>72</i>&nbsp;		LinkedList&lt;Appt&gt; list1 = new LinkedList&lt;Appt&gt;();</b>
+<b class="fc"><i>73</i>&nbsp;		LinkedList&lt;Appt&gt; list2 = new LinkedList&lt;Appt&gt;();</b>
+<i>74</i>&nbsp;
+<b class="fc"><i>75</i>&nbsp;		int startHour=15;</b>
+<b class="fc"><i>76</i>&nbsp;		int startMinute=30;</b>
+<b class="fc"><i>77</i>&nbsp;		int startDay=21;</b>
+<b class="fc"><i>78</i>&nbsp;		int startMonth=01;</b>
+<b class="fc"><i>79</i>&nbsp;		int startYear=2018;</b>
+<b class="fc"><i>80</i>&nbsp;		String title=&quot;Birthday Party&quot;;</b>
+<b class="fc"><i>81</i>&nbsp;		String description=&quot;This is my birthday party.&quot;;</b>
+<i>82</i>&nbsp;		//Construct a new Appointment object with the initial data
+<b class="fc"><i>83</i>&nbsp;		Appt appt = new Appt(startHour,</b>
+<i>84</i>&nbsp;				startMinute ,
+<i>85</i>&nbsp;				startDay ,
+<i>86</i>&nbsp;				startMonth ,
+<i>87</i>&nbsp;				startYear ,
+<i>88</i>&nbsp;				title,
+<i>89</i>&nbsp;				description);
+<i>90</i>&nbsp;
+<b class="fc"><i>91</i>&nbsp;		int[] recurArray={2,3,4};</b>
+<b class="fc"><i>92</i>&nbsp;		appt.setRecurrence( recurArray, Appt.RECUR_BY_MONTHLY, 2, Appt.RECUR_NUMBER_FOREVER);</b>
+<b class="fc"><i>93</i>&nbsp;		list1.add(appt);</b>
+<i>94</i>&nbsp;
+<b class="fc"><i>95</i>&nbsp;		startHour = 15;</b>
+<b class="fc"><i>96</i>&nbsp;		startMinute=30;</b>
+<b class="fc"><i>97</i>&nbsp;		startDay=22;</b>
+<b class="fc"><i>98</i>&nbsp;		startMonth=01;</b>
+<b class="fc"><i>99</i>&nbsp;		startYear=2018;</b>
+<b class="fc"><i>100</i>&nbsp;		title=&quot;Second appt&quot;;</b>
+<b class="fc"><i>101</i>&nbsp;		description=&quot;This is the second appt.&quot;;</b>
+<i>102</i>&nbsp;		//Construct a new Appointment object with the initial data
+<b class="fc"><i>103</i>&nbsp;		Appt appt2 = new Appt(startHour,</b>
+<i>104</i>&nbsp;				startMinute ,
+<i>105</i>&nbsp;				startDay ,
+<i>106</i>&nbsp;				startMonth ,
+<i>107</i>&nbsp;				startYear ,
+<i>108</i>&nbsp;				title,
+<i>109</i>&nbsp;				description);
+<b class="fc"><i>110</i>&nbsp;		appt2.setRecurrence( recurArray, Appt.RECUR_BY_YEARLY, 2, Appt.RECUR_NUMBER_FOREVER);</b>
+<b class="fc"><i>111</i>&nbsp;		list1.add(appt2);</b>
+<i>112</i>&nbsp;
+<b class="fc"><i>113</i>&nbsp;		int[] temp = {1,0};</b>
+<i>114</i>&nbsp;
+<b class="fc"><i>115</i>&nbsp;		TimeTable timeTable = new TimeTable();</b>
+<b class="fc"><i>116</i>&nbsp;		GregorianCalendar firstDay = new GregorianCalendar(2018,01,21);</b>
+<b class="fc"><i>117</i>&nbsp;		GregorianCalendar lastDay = (GregorianCalendar)firstDay.clone();</b>
+<b class="fc"><i>118</i>&nbsp;		lastDay.add(Calendar.DAY_OF_MONTH,5);</b>
+<b class="fc"><i>119</i>&nbsp;		LinkedList&lt;CalDay&gt; calDays = new LinkedList&lt;CalDay&gt;();</b>
+<b class="fc"><i>120</i>&nbsp;		calDays = timeTable.getApptRange(list1, firstDay, lastDay);</b>
+<i>121</i>&nbsp;
+<b class="fc"><i>122</i>&nbsp;		list1 = timeTable.permute(list1,temp);</b>
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;		//assertions
+<b class="fc"><i>125</i>&nbsp;		assertEquals(list1.get(0).getStartHour(),appt.getStartHour());</b>
+<i>126</i>&nbsp;	 }
+<b class="fc"><i>127</i>&nbsp;}</b>
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-01-29 20:09</div>
+</div>
+</body>
+</html>

@@ -103,7 +103,7 @@
 <i>29</i>&nbsp;		
 <b class="fc"><i>30</i>&nbsp;		int baseDays = DaysInMonth[month];</b>
 <i>31</i>&nbsp;	
-<b class="fc"><i>32</i>&nbsp;		if(IsLeapYear(year) &amp;&amp; (month == FEBRUARY)) {</b>
+<b class="pc"><i>32</i>&nbsp;		if(IsLeapYear(year) &amp;&amp; (month == FEBRUARY)) {</b>
 <b class="nc"><i>33</i>&nbsp;				baseDays = baseDays + 1;</b>
 <i>34</i>&nbsp;		}
 <i>35</i>&nbsp;	
@@ -117,7 +117,7 @@
 <i>43</i>&nbsp;	**/
 <i>44</i>&nbsp;	public static boolean IsLeapYear(int year) {
 <i>45</i>&nbsp;	//if the year is a multiple of 100, the year is a leap year if its also a multiple of 400
-<b class="fc"><i>46</i>&nbsp;		if ((year % 100) == 0) {</b>
+<b class="pc"><i>46</i>&nbsp;		if ((year % 100) == 0) {</b>
 <i>47</i>&nbsp;			
 <b class="nc"><i>48</i>&nbsp;			if((year % 400) == 0) {</b>
 <b class="nc"><i>49</i>&nbsp;				return true;</b>
@@ -128,7 +128,7 @@
 <i>54</i>&nbsp;		}
 <i>55</i>&nbsp;	
 <i>56</i>&nbsp;		//year is also leap year if multiple of 4
-<b class="fc"><i>57</i>&nbsp;		if ((year % 4) == 0) {</b>
+<b class="pc"><i>57</i>&nbsp;		if ((year % 4) == 0) {</b>
 <b class="nc"><i>58</i>&nbsp;			return true;</b>
 <i>59</i>&nbsp;		}
 <i>60</i>&nbsp;		else{
@@ -141,7 +141,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-01-29 12:48</div>
+    <div style="float:right;">generated on 2018-01-29 20:09</div>
 </div>
 </body>
 </html>
