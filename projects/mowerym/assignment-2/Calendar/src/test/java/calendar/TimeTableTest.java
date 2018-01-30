@@ -17,7 +17,6 @@ public class TimeTableTest {
 
 	 @Test
 	  public void test01()  throws Throwable  {
-		 
 	 }
 	 @Test
 	  public void test02()  throws Throwable  {

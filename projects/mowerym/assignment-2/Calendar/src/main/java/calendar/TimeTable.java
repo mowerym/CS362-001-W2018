@@ -88,8 +88,8 @@ public class TimeTable {
 	     * occurs. The days are guaranteed to be between firstDay (inclusive) and
 	     * lastDay (exclusive). They are guaranteed to be in order.
 	     **/
-	    private static LinkedList<GregorianCalendar> getApptOccurences(Appt appt, 
-	        GregorianCalendar firstDay, GregorianCalendar lastDay) {
+	    protected static LinkedList<GregorianCalendar> getApptOccurences(Appt appt,
+																		 GregorianCalendar firstDay, GregorianCalendar lastDay) {
 	        
 	        LinkedList<GregorianCalendar> result = new LinkedList<GregorianCalendar>();
 	        
