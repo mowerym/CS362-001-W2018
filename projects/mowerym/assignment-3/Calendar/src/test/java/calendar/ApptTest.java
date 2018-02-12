@@ -27,15 +27,35 @@ public class ApptTest {
 		          startYear ,
 		          title,
 		         description);
+		 Appt appt2 = new Appt(startHour,
+				 startMinute,
+				 startDay,
+				 startMonth,
+				 startYear,
+				 title,
+				 description);
 	// assertions
 		 assertTrue(appt.getValid());
+		 assertTrue(appt2.getValid());
 		 assertEquals(21, appt.getStartHour());
 		 assertEquals(30, appt.getStartMinute());
 		 assertEquals(15, appt.getStartDay());
 		 assertEquals(01, appt.getStartMonth());
 		 assertEquals(2018, appt.getStartYear());
+		 appt.setStartHour(21);
+		 appt.setStartMinute(30);
+		 appt.setStartDay(15);
+		 appt.setStartMonth(01);
+		 appt.setStartYear(2018);
+		 assertEquals("\t1/15/2018 at 9:30pm ,Birthday Party, This is my birthday party.\n", appt.toString());
 		 assertEquals("Birthday Party", appt.getTitle());
-		 assertEquals("This is my birthday party.", appt.getDescription());         		
+		 assertEquals("This is my birthday party.", appt.getDescription());
+		 assertEquals(false, appt.isRecurring());
+		 assertEquals(0, appt.getRecurIncrement());
+		 assertEquals(0, appt.getRecurNumber());
+		 assertEquals(2, appt.getRecurBy());
+		 assertNotNull(appt.getRecurDays());
+		 assertNotNull(appt.compareTo(appt2));
 	 }
 
 	/**
