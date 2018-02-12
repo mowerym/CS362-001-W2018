@@ -276,7 +276,7 @@ public class Appt implements  Comparable<Appt>{
      * description.
      * @return a printable representation of this appointment
      */
-    private String represntationApp(){
+    protected String represntationApp(){
         String half = (getStartHour() > 11) ? "pm" : "am";
         int printableHour = getStartHour();
         if (printableHour > 11)
