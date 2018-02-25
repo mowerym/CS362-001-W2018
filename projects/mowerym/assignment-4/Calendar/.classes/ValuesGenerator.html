@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ValuesGenerator</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">calendar</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ValuesGenerator (calendar)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ValuesGenerator</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.5%
+  </span>
+  <span class="absValue">
+    (7/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.5%
+  </span>
+  <span class="absValue">
+    (21/ 22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package calendar;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.ArrayList;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;import java.util.Random;
+<i>6</i>&nbsp;
+<b class="nc"><i>7</i>&nbsp;public class ValuesGenerator {</b>
+<i>8</i>&nbsp;	//changed the MAX_VALUE to allow for error cases
+<i>9</i>&nbsp;	private final static int MAX_VALUE=70;
+<i>10</i>&nbsp;	//private final static final int MIN_VALUE=-10;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;	private final static float SET_TO_NULL = 0.05f;
+<i>13</i>&nbsp;	
+<i>14</i>&nbsp;	public static int RandInt(Random random){
+<b class="fc"><i>15</i>&nbsp;    	int n = random.nextInt(MAX_VALUE);// get a random number between 0 (inclusive) and  MAX_VALUE=10 (exclusive)</b>
+<b class="fc"><i>16</i>&nbsp;        return (int) n;</b>
+<i>17</i>&nbsp;        }
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    	
+<i>20</i>&nbsp;	/**
+<i>21</i>&nbsp;	 * This generates a coin flip with a probability &lt;tt&gt;probability&lt;/tt&gt; of
+<i>22</i>&nbsp;	 * returning true, else returning false.
+<i>23</i>&nbsp;	 */
+<i>24</i>&nbsp;	public static boolean getBoolean(float probability, Random random){
+<b class="fc"><i>25</i>&nbsp;		return random.nextFloat() &lt; probability;</b>
+<i>26</i>&nbsp;	}
+<i>27</i>&nbsp;	
+<i>28</i>&nbsp;
+<b class="fc"><i>29</i>&nbsp;	private static final char[] BASE_CHARACTERS = {</b>
+<i>30</i>&nbsp;		&#39; &#39;, &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;,
+<i>31</i>&nbsp;		&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;, &#39;k&#39;, &#39;l&#39;, &#39;m&#39;, &#39;n&#39;, &#39;o&#39;, &#39;p&#39;, &#39;q&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;, &#39;u&#39;, &#39;v&#39;, &#39;w&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;,
+<i>32</i>&nbsp;		&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;, &#39;K&#39;, &#39;L&#39;, &#39;M&#39;, &#39;N&#39;, &#39;O&#39;, &#39;P&#39;, &#39;Q&#39;, &#39;R&#39;, &#39;S&#39;, &#39;T&#39;, &#39;U&#39;, &#39;V&#39;, &#39;W&#39;, &#39;X&#39;, &#39;Y&#39;, &#39;Z&#39;
+<i>33</i>&nbsp;	};
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;	public static char getCharacter(Random random) {
+<b class="fc"><i>36</i>&nbsp;			return BASE_CHARACTERS[random.nextInt(BASE_CHARACTERS.length)];</b>
+<i>37</i>&nbsp;	}
+<i>38</i>&nbsp;	public static String getString(Random random) {
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;	    if (ValuesGenerator.getBoolean(SET_TO_NULL,random))	return null;</b>
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;	    final int randNum;
+<i>43</i>&nbsp;	    
+<b class="fc"><i>44</i>&nbsp;	    if(ValuesGenerator.getBoolean(.75f,random)) randNum = random.nextInt(10);</b>
+<b class="fc"><i>45</i>&nbsp;		else if(ValuesGenerator.getBoolean(.75f,random)) randNum = random.nextInt(50);</b>
+<b class="fc"><i>46</i>&nbsp;		else randNum = random.nextInt(100);</b>
+<i>47</i>&nbsp;
+<b class="fc"><i>48</i>&nbsp;		char str[] = new char[randNum];</b>
+<i>49</i>&nbsp;
+<b class="fc"><i>50</i>&nbsp;		for(int i = 0; i &lt; randNum; i++)</b>
+<b class="fc"><i>51</i>&nbsp;			str[i] = getCharacter(random);</b>
+<i>52</i>&nbsp;
+<b class="fc"><i>53</i>&nbsp;		return new java.lang.String(str);</b>
+<i>54</i>&nbsp;	}
+<i>55</i>&nbsp;	
+<i>56</i>&nbsp;	
+<i>57</i>&nbsp;	/**
+<i>58</i>&nbsp;	 * 
+<i>59</i>&nbsp;	 * @param random, min , max
+<i>60</i>&nbsp;	 * @return get a random number between MIN_VALUE (inclusive) and  MAX_VALUE (inclusive)    
+<i>61</i>&nbsp;	 */
+<i>62</i>&nbsp;	public static int getRandomIntBetween(Random random, int min, int max) {
+<i>63</i>&nbsp;		
+<b class="fc"><i>64</i>&nbsp;		long range       = (long)max - (long)min + 1;</b>
+<b class="fc"><i>65</i>&nbsp;		long fraction    = (long)(range * random.nextDouble());</b>
+<b class="fc"><i>66</i>&nbsp;	    int randomNumber = (int)(fraction + min); </b>
+<b class="fc"><i>67</i>&nbsp;		return randomNumber;</b>
+<i>68</i>&nbsp;	}
+<i>69</i>&nbsp;	
+<i>70</i>&nbsp;	public static int[] generateRandomArray(Random random,int n){
+<i>71</i>&nbsp;
+<b class="fc"><i>72</i>&nbsp;	    int[] tempArray=new int [n];</b>
+<i>73</i>&nbsp;
+<b class="fc"><i>74</i>&nbsp;	    for (int i = 0; i &lt; n; i++)</b>
+<i>75</i>&nbsp;	    {
+<b class="fc"><i>76</i>&nbsp;	    	tempArray[i]=getRandomIntBetween(random,0,MAX_VALUE);</b>
+<i>77</i>&nbsp;	    }
+<b class="fc"><i>78</i>&nbsp;	   return tempArray;</b>
+<i>79</i>&nbsp;	   
+<i>80</i>&nbsp;	
+<i>81</i>&nbsp;	} 
+<i>82</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-02-25 12:12</div>
+</div>
+</body>
+</html>
