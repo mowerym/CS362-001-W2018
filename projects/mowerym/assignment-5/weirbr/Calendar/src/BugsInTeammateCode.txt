@@ -1,0 +1,15 @@
+1st bug:
+Location:
+Appt.java - line 122
+Cause:
+The current comparison makes it impossible for there to be a true statement.
+Solution:
+Replace the && (and) comparison with || (or)
+
+2nd bug:
+Location:
+TimeTable.java - line 71
+Cause:
+The current increment of daysDifference causes an out of bounds error.
+Solution:
+Change the line to daysDifference ++
