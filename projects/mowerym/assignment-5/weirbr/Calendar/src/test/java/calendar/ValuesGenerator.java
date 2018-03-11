@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class ValuesGenerator {
-	private final static int MAX_VALUE=10;
+	//changed the MAX_VALUE to allow for error cases
+	private final static int MAX_VALUE=70;
 	//private final static final int MIN_VALUE=-10;
 
 	private final static float SET_TO_NULL = 0.05f;

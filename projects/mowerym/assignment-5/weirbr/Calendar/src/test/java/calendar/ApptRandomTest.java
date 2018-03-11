@@ -5,8 +5,6 @@ import java.util.Random;
 
 import org.junit.Test;
 
-
-
 import static org.junit.Assert.*;
 
 
@@ -67,7 +65,7 @@ public class ApptRandomTest {
 				
 				 int startHour=ValuesGenerator.RandInt(random);
 				 int startMinute=ValuesGenerator.RandInt(random);
-				 int startDay=ValuesGenerator.RandInt(random);;
+				 int startDay=ValuesGenerator.RandInt(random);
 				 int startMonth=ValuesGenerator.getRandomIntBetween(random, 1, 11);
 				 int startYear=ValuesGenerator.RandInt(random);
 				 String title="Birthday Party";
@@ -80,6 +78,15 @@ public class ApptRandomTest {
 				          startYear ,
 				          title,
 				         description);
+				 // set up tests for the assertions
+				// isValid() tests
+				if(startMinute<0 || startMinute>59)
+					assertEquals( false, appt.getValid());
+				if(startHour<0 || startHour>23)
+					assertEquals( false, appt.getValid());
+				if(startMonth<1 || startMonth>12)
+					assertEquals(false, appt.getValid());
+
 			 if(!appt.getValid())continue;
 			for (int i = 0; i < NUM_TESTS; i++) {
 					String methodName = ApptRandomTest.RandomSelectMethod(random);
@@ -89,12 +96,17 @@ public class ApptRandomTest {
 						}
 					   else if (methodName.equals("setRecurrence")){
 						   int sizeArray=ValuesGenerator.getRandomIntBetween(random, 0, 8);
-						   int[] recurDays=ValuesGenerator.generateRandomArray(random, sizeArray);
+						   int[] recurDays= ValuesGenerator.generateRandomArray(random, sizeArray);
 						   int recur=ApptRandomTest.RandomSelectRecur(random);
 						   int recurIncrement = ValuesGenerator.RandInt(random);
 						   int recurNumber=ApptRandomTest.RandomSelectRecurForEverNever(random);
 						   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
-						}				
+						}
+						//test setRecurDays for homework
+						appt.setRecurDays(null);
+						if(appt.recurDays == null)
+							assertEquals(0, appt.recurDays);
+
 				}
 				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
