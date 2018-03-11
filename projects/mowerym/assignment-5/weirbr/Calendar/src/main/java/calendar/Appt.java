@@ -58,10 +58,10 @@ public class Appt implements  Comparable<Appt>{
     /** Used for setting appointments to never recur */
     public static final int RECUR_NUMBER_NEVER = 0;
     /** Day(s) of the week that the appointment recurs on */
-    private int[] recurDays;
+    protected int[] recurDays;
     
     /** What the appointment recurs on (weeks/months/years) */
-    private int recurBy;
+    protected int recurBy;
     
     /** How often the appointment recurs on (every ? weeks/months/years) */
     private int recurIncrement;
@@ -224,7 +224,7 @@ public class Appt implements  Comparable<Appt>{
         setRecurIncrement(recurIncrement);
         setRecurNumber(recurNumber);
     }
-    private void setRecurDays(int[] recurDays) {
+    protected void setRecurDays(int[] recurDays) {
         if (recurDays == null) {
             this.recurDays = new int[0];
         }
@@ -277,7 +277,7 @@ public class Appt implements  Comparable<Appt>{
      * description.
      * @return a printable representation of this appointment
      */
-    private String represntationApp(){
+    protected String represntationApp(){
         String half = (getStartHour() > 11) ? "pm" : "am";
         int printableHour = getStartHour();
         if (printableHour > 11)
