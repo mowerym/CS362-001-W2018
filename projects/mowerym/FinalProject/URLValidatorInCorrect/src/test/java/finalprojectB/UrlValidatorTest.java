@@ -200,16 +200,16 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(" ");
       System.out.println(" ");
       System.out.println("Should be false:");
-      System.out.println("?action");
+      System.out.println("shouldBeFalse");
       System.out.println("fail\n");
-      String[] test4 = {"?action=view", " ", "?action", "fail"};
+      String[] test4 = {"?action=view", "", "shouldBeFalse", "fail"};
       int size4 = test4.length;
       UrlValidator urlVal4 = new UrlValidator(test4);
       System.out.println("Begin tests:");
       for(int i = 0; i< size4; i++)
       {
          System.out.println(test4[i]);
-         if(urlVal4.isValidPath(test4[i]))
+         if(urlVal4.isValidQuery(test4[i]))
          {
             System.out.println("true");
          }
