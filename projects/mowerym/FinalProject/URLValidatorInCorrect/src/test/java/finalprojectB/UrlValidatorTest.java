@@ -73,7 +73,7 @@ public class UrlValidatorTest extends TestCase {
       } else {
          System.out.println("url is invalid");
       }
-	   
+      System.out.println("_______________________________________________");
    }
    
    
@@ -111,7 +111,12 @@ public class UrlValidatorTest extends TestCase {
             System.out.println("false");
          }
       }
-
+      System.out.println("End tests.");
+   System.out.println("__________________________________________________");
+   }
+   
+   public void testYourSecondPartition(){
+		 //You can use this function to implement your Second Partition testing	   
       // authority testing
       // true authorities
       // www.google.com, go.com, foo.bar.com
@@ -134,7 +139,7 @@ public class UrlValidatorTest extends TestCase {
       for(int i = 0; i< size2; i++)
       {
          System.out.println(test2[i]);
-         if(urlVal2.isValidScheme(test2[i]))
+         if(urlVal2.isValidAuthority(test2[i]))
          {
             System.out.println("true");
          }
@@ -143,17 +148,80 @@ public class UrlValidatorTest extends TestCase {
             System.out.println("false");
          }
       }
-
-
-
+      System.out.println("End tests.");
+      System.out.println("_______________________________________________");
    }
-   
-   public void testYourSecondPartition(){
-		 //You can use this function to implement your Second Partition testing	   
-
+   //You need to create more test cases for your Partitions if you need to
+   public void testYourThirdPartition()
+   {
+      //You can use this function to implement your First Partition testing
+      // partition test the paths
+      // true paths - /test1, /t123, /
+      // false paths - /.., /../, /#
+      System.out.println("Path testing\n");
+      System.out.println("Should be true:");
+      System.out.println("/test1");
+      System.out.println("/t123");
+      System.out.println("/");
+      System.out.println(" ");
+      System.out.println("Should be false:");
+      System.out.println("/..");
+      System.out.println("/../");
+      System.out.println("/#\n");
+      String[] test3 = {"/test1", "/t123", "/", "/..","/../", "/#"};
+      int size3 = test3.length;
+      UrlValidator urlVal3 = new UrlValidator(test3);
+      System.out.println("Begin tests:");
+      for(int i = 0; i< size3; i++)
+      {
+         System.out.println(test3[i]);
+         if(urlVal3.isValidPath(test3[i]))
+         {
+            System.out.println("true");
+         }
+         else
+         {
+            System.out.println("false");
+         }
+      }
+      System.out.println("End tests.");
+      System.out.println("_______________________________________________");
    }
-   //You need to create more test cases for your Partitions if you need to 
-   
+
+   public void testYourFourthPartition()
+   {
+      //You can use this function to implement your First Partition testing
+      // partition test the query
+      // true query - ?action=view, " "
+      // false query - ?action, fail
+      System.out.println("Query testing\n");
+      System.out.println("Should be true:");
+      System.out.println("?action=view");
+      System.out.println(" ");
+      System.out.println(" ");
+      System.out.println("Should be false:");
+      System.out.println("?action");
+      System.out.println("fail\n");
+      String[] test4 = {"?action=view", " ", "?action", "fail"};
+      int size4 = test4.length;
+      UrlValidator urlVal4 = new UrlValidator(test4);
+      System.out.println("Begin tests:");
+      for(int i = 0; i< size4; i++)
+      {
+         System.out.println(test4[i]);
+         if(urlVal4.isValidPath(test4[i]))
+         {
+            System.out.println("true");
+         }
+         else
+         {
+            System.out.println("false");
+         }
+      }
+      System.out.println("End tests.");
+      System.out.println("_______________________________________________");
+   }
+
    public void testIsValid()
    {
 	   //You can use this function for programming based testing
