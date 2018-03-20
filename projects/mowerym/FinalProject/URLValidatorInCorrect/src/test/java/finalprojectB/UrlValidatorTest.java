@@ -225,6 +225,29 @@ public class UrlValidatorTest extends TestCase {
    public void testIsValid()
    {
 	   //You can use this function for programming based testing
+	   System.out.println("Programming Based Testing Begins: \n");
+       UrlValidator urlValidator = new UrlValidator();
+
+       String[] test = {"http://", "ftp://", "h3t://", " ","3ht://", "http:/", "http:", "http/", "://"};
+       String[] test2 = {"www.google.com", "go.com", "foo.bar.com", "go.a", "1.2.3", "aaa"};
+       String[] test3 = {"/test1", "/t123", "/", "/..","/../", "/#"};
+       String[] test4 = {"?action=view", "", "shouldBeFalse", "fail"};
+
+       for(int a = 0; a < test.length; a++){
+           for(int b = 0; b < test2.length;b++){
+               for(int c = 0; c < test3.length;c++){
+                   for(int d = 0; d < test4.length;d++){
+                       String urlTest = test[a]+test2[b]+test3[c]+test4[d];
+                       if(urlValidator.isValid(urlTest)){
+                           System.out.println("Test string: " + urlTest + " is valid");
+                       }
+                       else{
+                           System.out.println("Test string: " + urlTest + " is invalid");
+                       }
+                   }
+               }
+           }
+       }
 
    }
    
