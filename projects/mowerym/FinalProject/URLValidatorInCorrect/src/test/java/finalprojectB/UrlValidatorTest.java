@@ -96,10 +96,9 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("http/");
       System.out.println("://\n");
       String[] test = {"http://", "ftp://", "h3t://", " ","3ht://", "http:/", "http:", "http/", "://"};
-      int size = test.length;
       UrlValidator urlVal = new UrlValidator(test);
       System.out.println("Begin tests:");
-      for(int i = 0; i< size; i++)
+      for(int i = 0; i< 9; i++)
       {
          System.out.println(test[i]);
          if(urlVal.isValidScheme(test[i]))
@@ -133,10 +132,9 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("1.2.3");
       System.out.println("aaa\n");
       String[] test2 = {"www.google.com", "go.com", "foo.bar.com", "go.a", "1.2.3", "aaa"};
-      int size2 = test2.length;
       UrlValidator urlVal2 = new UrlValidator(test2);
       System.out.println("Begin tests:");
-      for(int i = 0; i< size2; i++)
+      for(int i = 0; i< 6; i++)
       {
          System.out.println(test2[i]);
          if(urlVal2.isValidAuthority(test2[i]))
@@ -169,10 +167,9 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("/../");
       System.out.println("/#\n");
       String[] test3 = {"/test1", "/t123", "/", "/..","/../", "/#"};
-      int size3 = test3.length;
       UrlValidator urlVal3 = new UrlValidator(test3);
       System.out.println("Begin tests:");
-      for(int i = 0; i< size3; i++)
+      for(int i = 0; i< 6; i++)
       {
          System.out.println(test3[i]);
          if(urlVal3.isValidPath(test3[i]))
@@ -203,10 +200,9 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("shouldBeFalse");
       System.out.println("fail\n");
       String[] test4 = {"?action=view", "", "shouldBeFalse", "fail"};
-      int size4 = test4.length;
       UrlValidator urlVal4 = new UrlValidator(test4);
       System.out.println("Begin tests:");
-      for(int i = 0; i< size4; i++)
+      for(int i = 0; i< 4; i++)
       {
          System.out.println(test4[i]);
          if(urlVal4.isValidQuery(test4[i]))
